@@ -130,3 +130,8 @@ func _state_opening_door(event: InputEventKey) -> void:
 	last_action_pressed = event
 	if action_counter >= ACTION_LIMIT:
 		bottom_text.text = "You escaped!"
+
+
+func _on_GameOverTimer_timeout():
+	bottom_text.text = "Marico el que lo lea"
+	queue_free()
