@@ -239,24 +239,24 @@ __meta__ = {
 }
 
 [node name="TopText" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 73.0
+margin_top = 41.0
 margin_right = 256.0
-margin_bottom = 87.0
+margin_bottom = 55.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Up" type="TextureRect" parent="HUD/VBoxContainer"]
-margin_top = 91.0
+margin_top = 59.0
 margin_right = 256.0
-margin_bottom = 107.0
+margin_bottom = 75.0
 texture = ExtResource( 6 )
 stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/VBoxContainer"]
-margin_top = 111.0
+margin_top = 79.0
 margin_right = 256.0
-margin_bottom = 127.0
+margin_bottom = 95.0
 alignment = 1
 
 [node name="Left" type="TextureRect" parent="HUD/VBoxContainer/HBoxContainer"]
@@ -280,24 +280,24 @@ texture = ExtResource( 5 )
 
 [node name="Down" type="TextureRect" parent="HUD/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 131.0
+margin_top = 99.0
 margin_right = 256.0
-margin_bottom = 147.0
+margin_bottom = 115.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="BottomText" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 151.0
+margin_top = 119.0
 margin_right = 256.0
-margin_bottom = 165.0
+margin_bottom = 133.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DebugText" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 169.0
+margin_top = 137.0
 margin_right = 256.0
-margin_bottom = 183.0
+margin_bottom = 151.0
 
 [node name="GameOverTimer" type="Timer" parent="."]
 wait_time = 60.0
