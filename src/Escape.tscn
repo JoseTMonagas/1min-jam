@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Escape.gd" type="Script" id=1]
+[ext_resource path="res://assets/aseprite/key5.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/tile_0440.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tile_0441.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/tile_0439.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/tile_0438.png" type="Texture" id=6]
+[ext_resource path="res://assets/aseprite/key4.png" type="Texture" id=7]
+[ext_resource path="res://assets/aseprite/key2.png" type="Texture" id=8]
+[ext_resource path="res://assets/aseprite/key1.png" type="Texture" id=9]
+[ext_resource path="res://assets/aseprite/key3.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FITTING"
@@ -305,5 +310,25 @@ anims/NONE = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 anims/ROTATING = SubResource( 4 )
 anims/UNLOCKING = SubResource( 5 )
+
+[node name="key1" type="Sprite" parent="."]
+position = Vector2( 132.091, 132.242 )
+texture = ExtResource( 9 )
+
+[node name="key2" type="Sprite" parent="."]
+position = Vector2( 148.672, 132.218 )
+texture = ExtResource( 8 )
+
+[node name="key3" type="Sprite" parent="key2"]
+position = Vector2( 21.2146, 0.233994 )
+texture = ExtResource( 10 )
+
+[node name="key4" type="Sprite" parent="key2"]
+position = Vector2( 40.9647, 0.891006 )
+texture = ExtResource( 7 )
+
+[node name="key5" type="Sprite" parent="key2"]
+position = Vector2( 61.712, -0.163544 )
+texture = ExtResource( 2 )
 
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
