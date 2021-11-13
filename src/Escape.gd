@@ -48,9 +48,10 @@ onready var top_text: Label = $HUD/VBoxContainer/TopText
 onready var bottom_text: Label = $HUD/VBoxContainer/BottomText
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 func _ready() -> void:
-	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.randomize()
 	keys_amount = rng.randi_range(MIN_KEY_AMOUNT, MAX_KEY_AMOUNT)
 	correct_key = rng.randi_range(0, keys_amount)
@@ -138,8 +139,13 @@ func _state_fitting_key(event: InputEventKey) -> void:
 			bottom_text.text = "It fits!"
 			self.state = STATES.ROTATING
 		else:
-			bottom_text.text = "It doesn't fit!"
-			self.state = STATES.NONE
+			var it_fits: bool = bool(rng.randf() < 1 - 0.5)
+			if it_fits:
+				bottom_text.text = "It fits!"
+				self.state = STATES.ROTATING
+			else:
+				bottom_text.text = "It doesn't fit!"
+				self.state = STATES.NONE
 
 
 func _state_rotating_key(event: InputEventKey) -> void:
