@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/370937__inspectorj__horror-violin-tremolo-cluster-b.wav-0fdac63fd06a45e36d1e030032b4767b.sample"
+
+[deps]
+
+source_file="res://assets/audio/370937__inspectorj__horror-violin-tremolo-cluster-b.wav"
+dest_files=[ "res://.import/370937__inspectorj__horror-violin-tremolo-cluster-b.wav-0fdac63fd06a45e36d1e030032b4767b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

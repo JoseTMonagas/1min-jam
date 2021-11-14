@@ -1,5 +1,7 @@
 extends Node
 
+# "Horror, Violin Tremolo Cluster, B.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+
 # Defines the states constant allowed, each defines a different operation of
 # the game.
 # NONE: The initial state, where the player must select a key using
@@ -20,15 +22,17 @@ extends Node
 # then a game over ensues, even if the player reached the OPENING state itself.
 enum STATES {NONE, FITTING, ROTATING, UNLOCKING, OPENING}
 
+const NONE_SFX = preload("res://assets/audio/563519__gdog1622__keys-metalretrieve-trimmed-01.wav")
+const FITTING_ROTATING_SFX = preload("res://assets/audio/334993__paulocorona__keys-moving.wav")
+const UNLOCKING_SFX = preload("res://assets/audio/131438__skydran__keys-on-door-and-open.wav")
+const OPENING_SFX = preload("res://assets/audio/550427__danielthebanana4__banging-on-door.mp3")
+
+
 # Defines how much should the keys be pressed before moving on to the next state
 export var ACTION_LIMIT: int = 20
-# Defines the lower amount of keys allowed per game session
-export var MIN_KEY_AMOUNT: int = 5
-# Defines the upper amount of keys allowed per game session
-export var MAX_KEY_AMOUNT: int = 16
 
 # How many keys were generated for the current game session (0 based)
-var keys_amount: int = -1
+var keys_amount: int = 4
 # The index from 0 to keys_amount of the correct_key
 var correct_key: int = -1
 # The currently selected key, set during the NONE state
@@ -44,25 +48,29 @@ var state: int = STATES.NONE setget _set_state
 # to the next state.
 var action_counter: int = 0
 
+onready var selecting_key: AnimatedSprite = $SelectingKeys
 onready var top_text: Label = $HUD/VBoxContainer/TopText
 onready var bottom_text: Label = $HUD/VBoxContainer/BottomText
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var audio_player: AudioStreamPlayer = $SFX
 
 onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
 	rng.randomize()
-	keys_amount = rng.randi_range(MIN_KEY_AMOUNT, MAX_KEY_AMOUNT)
 	correct_key = rng.randi_range(0, keys_amount)
 	self.selected_key = 0
 	var text: String = "There are %s keys, pick which one to try (%s):" % [keys_amount, correct_key]
 	top_text.text = text
+	self.state = STATES.NONE
+	$EscalationSFX.play()
 
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	match(state):
 		STATES.NONE:
+			$SelectingKeys.visible = true
 			_state_selecting_key(event)
 		STATES.FITTING:
 			_state_fitting_key(event)
@@ -74,18 +82,12 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 			_state_opening_door(event)
 
 
-func _physics_process(delta: float) -> void:
-	# TODO updates debug information, must be deleted before release
-	var key = last_action_pressed.as_text() if last_action_pressed != null else ""
-	var text: String = ("Current State: {state}\nAction Counter: {counter}\nLast Pressed Key: {key}".format({ "state": state, "counter": action_counter, "key": key}))
-	$HUD/VBoxContainer/DebugText.text = text
-
-
 func _set_selected_key(value: int) -> int:
 	# Selected key setter used mostly to update the label despicting the
 	# the currently selected key
 	# TODO show using VFX which key is being selected instead of a label
 	selected_key = value
+	selecting_key.frame = selected_key
 	var text: String = "Currently selected key %s" % selected_key
 	bottom_text.text = text
 	return selected_key
@@ -96,30 +98,49 @@ func _set_state(value: int) -> int:
 	# TODO Add extra VFX and SFX to each state progress
 	state = value
 	action_counter = 0
+	$WhimperSFX.play()
 	match(state):
 		STATES.NONE:
 			animation_player.play("NONE")
+			audio_player.stream = NONE_SFX
+			audio_player.play()
 		STATES.FITTING:
 			animation_player.play("FITTING")
+			audio_player.stream = FITTING_ROTATING_SFX
+			audio_player.play()
 		STATES.ROTATING:
 			animation_player.play("ROTATING")
+			audio_player.stream = FITTING_ROTATING_SFX
+			audio_player.play()
 		STATES.UNLOCKING:
 			animation_player.play("UNLOCKING")
+			audio_player.stream = UNLOCKING_SFX
+			audio_player.play()
 		STATES.OPENING:
-			# TODO: animation for opening
-			# animation_player.play("")
-			pass
+			animation_player.play("OPENING")
+			audio_player.stream = OPENING_SFX
+			audio_player.play()
 	return state
 
 
 func _state_selecting_key(event: InputEventKey) -> void:
 	# Defines how to react to key events during the NONE state
 	if event.is_action_pressed("ui_left"):
+		animation_player.play("RtLOUT")
+		yield(animation_player, "animation_finished")
 		self.selected_key = clamp(selected_key - 1, 0, selected_key)
+		animation_player.play("RtLIN")
+		yield(animation_player, "animation_finished")
+		
 	if event.is_action_pressed("ui_right"):
+		animation_player.play("LtROUT")
+		yield(animation_player, "animation_finished")
 		self.selected_key = clamp(selected_key + 1, selected_key, keys_amount)
-	if event.is_action_pressed("ui_accept"):
-		self.state = STATES.FITTING
+		animation_player.play("LtRIN")
+		yield(animation_player, "animation_finished")
+		
+	if event.is_action_pressed("ui_accept"):  
+		self.state = STATES.FITTING         
 
 
 func _state_fitting_key(event: InputEventKey) -> void:
@@ -172,19 +193,17 @@ func _state_unlocking_door(event: InputEventKey) -> void:
 	# Defines how to react to key events during the UNLOCKING state
 	# The user must press left, up, and right in quick sequence for
 	# `action_counter` to reach `ACTION_LIMIT`
-	if event.is_action_pressed("ui_up"):
-		if last_action_pressed.is_action_pressed("ui_left"):
-			action_counter += 10
-		else:
-			action_counter = 0
-	
+	if event.is_action_pressed("ui_down"):
+		action_counter += 1
+	if event.is_action_pressed("ui_left"):
+		action_counter += 1
 	if event.is_action_pressed("ui_right"):
-		if last_action_pressed.is_action_pressed("ui_up"):
-			action_counter += 10
-		else:
-			action_counter = 0
+		action_counter += 1
+	if event.is_action_pressed("ui_up"):
+		action_counter += 1
 	
 	last_action_pressed = event
+	
 	if action_counter >= ACTION_LIMIT:
 		bottom_text.text = "The door is stuck, push it!! Quick!!!"
 		self.state = STATES.OPENING
@@ -204,3 +223,7 @@ func _state_opening_door(event: InputEventKey) -> void:
 func _on_GameOverTimer_timeout():
 	bottom_text.text = "Marico el que lo lea"
 	queue_free()
+
+
+func _on_EscalationSFX_finished():
+	$DeathSFX.play()

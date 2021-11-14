@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/352508__epicdude959__creepy-ghost-scream.mp3-71a90d88cf9aa7c00da7b71f7c6fa6f8.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/352508__epicdude959__creepy-ghost-scream.mp3"
+dest_files=[ "res://.import/352508__epicdude959__creepy-ghost-scream.mp3-71a90d88cf9aa7c00da7b71f7c6fa6f8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

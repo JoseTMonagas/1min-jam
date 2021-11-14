@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/550427__danielthebanana4__banging-on-door.mp3-a0fd505777c454217c2b743b06f51424.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/550427__danielthebanana4__banging-on-door.mp3"
+dest_files=[ "res://.import/550427__danielthebanana4__banging-on-door.mp3-a0fd505777c454217c2b743b06f51424.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

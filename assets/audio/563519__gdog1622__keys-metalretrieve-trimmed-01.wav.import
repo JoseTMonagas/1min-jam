@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/563519__gdog1622__keys-metalretrieve-trimmed-01.wav-6d06f5c2e07c2e8e38f35e4f6ffdea32.sample"
+
+[deps]
+
+source_file="res://assets/audio/563519__gdog1622__keys-metalretrieve-trimmed-01.wav"
+dest_files=[ "res://.import/563519__gdog1622__keys-metalretrieve-trimmed-01.wav-6d06f5c2e07c2e8e38f35e4f6ffdea32.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0
