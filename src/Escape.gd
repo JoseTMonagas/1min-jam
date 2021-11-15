@@ -1,6 +1,6 @@
 extends Node
 
-# "Horror, Violin Tremolo Cluster, B.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+
 
 # Defines the states constant allowed, each defines a different operation of
 # the game.
@@ -30,6 +30,7 @@ const OPENING_SFX = preload("res://assets/audio/550427__danielthebanana4__bangin
 
 # Defines how much should the keys be pressed before moving on to the next state
 export var ACTION_LIMIT: int = 20
+export var QUANTUM_ON: bool = false
 
 # How many keys were generated for the current game session (0 based)
 var keys_amount: int = 4
@@ -49,7 +50,6 @@ var state: int = STATES.NONE setget _set_state
 var action_counter: int = 0
 
 onready var selecting_key: AnimatedSprite = $SelectingKeys
-onready var top_text: Label = $HUD/VBoxContainer/TopText
 onready var bottom_text: Label = $HUD/VBoxContainer/BottomText
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var audio_player: AudioStreamPlayer = $SFX
@@ -58,12 +58,12 @@ onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
+	ACTION_LIMIT = Singleton.action_limit
 	rng.randomize()
 	correct_key = rng.randi_range(0, keys_amount)
 	self.selected_key = 0
-	var text: String = "There are %s keys, pick which one to try (%s):" % [keys_amount, correct_key]
-	top_text.text = text
 	self.state = STATES.NONE
+	bottom_text.text = "Quick! Pick a key!"
 	$EscalationSFX.play()
 
 
@@ -88,8 +88,6 @@ func _set_selected_key(value: int) -> int:
 	# TODO show using VFX which key is being selected instead of a label
 	selected_key = value
 	selecting_key.frame = selected_key
-	var text: String = "Currently selected key %s" % selected_key
-	bottom_text.text = text
 	return selected_key
 
 func _set_state(value: int) -> int:
@@ -127,17 +125,13 @@ func _state_selecting_key(event: InputEventKey) -> void:
 	# Defines how to react to key events during the NONE state
 	if event.is_action_pressed("ui_left"):
 		animation_player.play("RtLOUT")
-		yield(animation_player, "animation_finished")
 		self.selected_key = clamp(selected_key - 1, 0, selected_key)
 		animation_player.play("RtLIN")
-		yield(animation_player, "animation_finished")
 		
 	if event.is_action_pressed("ui_right"):
 		animation_player.play("LtROUT")
-		yield(animation_player, "animation_finished")
 		self.selected_key = clamp(selected_key + 1, selected_key, keys_amount)
 		animation_player.play("LtRIN")
-		yield(animation_player, "animation_finished")
 		
 	if event.is_action_pressed("ui_accept"):  
 		self.state = STATES.FITTING         
@@ -160,6 +154,9 @@ func _state_fitting_key(event: InputEventKey) -> void:
 			bottom_text.text = "It fits!"
 			self.state = STATES.ROTATING
 		else:
+			if QUANTUM_ON:
+				correct_key = rng.randi_range(0, keys_amount)
+			
 			var it_fits: bool = bool(rng.randf() < 1 - 0.5)
 			if it_fits:
 				bottom_text.text = "It fits!"
@@ -186,6 +183,8 @@ func _state_rotating_key(event: InputEventKey) -> void:
 			bottom_text.text = "This is the key!"
 			self.state = STATES.UNLOCKING
 		else:
+			if QUANTUM_ON:
+				correct_key = rng.randi_range(0, keys_amount)
 			bottom_text.text = "It doesn't unlock!"
 			self.state = STATES.NONE
 

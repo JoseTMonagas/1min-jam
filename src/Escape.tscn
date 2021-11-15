@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Escape.gd" type="Script" id=1]
 [ext_resource path="res://assets/aseprite/key5.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/audio/260943__vdder-500__horror-drama-atmosfare.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/audio/370937__inspectorj__horror-violin-tremolo-cluster-b.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/audio/352508__epicdude959__creepy-ghost-scream.mp3" type="AudioStream" id=17]
+[ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=18]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -30,7 +31,7 @@ animations = [ {
 resource_name = "FITTING"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUD/VBoxContainer/HBoxContainer/Left:modulate")
+tracks/0/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -42,7 +43,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HUD/VBoxContainer/HBoxContainer/Right:modulate")
+tracks/1/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Right:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -54,7 +55,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HUD/VBoxContainer/Down:modulate")
+tracks/2/path = NodePath("HUD/VBoxContainer/Keys/Down:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -66,7 +67,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/VBoxContainer/Up:modulate")
+tracks/3/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -120,13 +121,13 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 127, 94 ), Vector2( 128, 87 ), Vector2( 128, 97 ), Vector2( 128, 88 ), Vector2( 128, 100 ), Vector2( 128, 95 ) ]
+"values": [ Vector2( 381, 285 ), Vector2( 381, 296 ), Vector2( 379, 278 ), Vector2( 386, 281 ), Vector2( 381, 296 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("HUD/VBoxContainer/HBoxContainer/Enter:modulate")
+tracks/8/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Enter:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -151,11 +152,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -64, 95 ), Vector2( 128, 94 ) ]
+"values": [ Vector2( -32, 448 ), Vector2( 381, 448 ) ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "LtROUT"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SelectingKeys:position")
 tracks/0/interp = 1
@@ -166,11 +168,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 128, 94 ), Vector2( 312, 95 ) ]
+"values": [ Vector2( 385, 448 ), Vector2( 840, 448 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "NONE"
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Key:visible")
 tracks/0/interp = 1
@@ -207,12 +210,84 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SelectingKeys:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 840, 448 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HUD/VBoxContainer/Keys/Down:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Enter:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.994492 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Right:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "OPENING"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUD/VBoxContainer/HBoxContainer/Left:modulate")
+tracks/0/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -224,7 +299,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HUD/VBoxContainer/HBoxContainer/Right:modulate")
+tracks/1/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Right:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -236,7 +311,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HUD/VBoxContainer/Down:modulate")
+tracks/2/path = NodePath("HUD/VBoxContainer/Keys/Down:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -248,7 +323,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/VBoxContainer/Up:modulate")
+tracks/3/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -305,10 +380,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 127, 94 ) ]
+"values": [ Vector2( 385, 293 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("HUD/VBoxContainer/HBoxContainer/Enter:modulate")
+tracks/8/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Enter:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -323,7 +398,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUD/VBoxContainer/HBoxContainer/Left:modulate")
+tracks/0/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -335,7 +410,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HUD/VBoxContainer/HBoxContainer/Right:modulate")
+tracks/1/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Right:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -347,7 +422,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HUD/VBoxContainer/Down:modulate")
+tracks/2/path = NodePath("HUD/VBoxContainer/Keys/Down:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -359,7 +434,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/VBoxContainer/Up:modulate")
+tracks/3/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -455,7 +530,7 @@ tracks/10/keys = {
 "values": [ 0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("HUD/VBoxContainer/HBoxContainer/Enter:modulate")
+tracks/11/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Enter:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -470,7 +545,7 @@ tracks/11/keys = {
 [sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUD/VBoxContainer/Up:modulate")
+tracks/0/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -482,7 +557,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HUD/VBoxContainer/HBoxContainer/Left:modulate")
+tracks/1/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -494,7 +569,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HUD/VBoxContainer/HBoxContainer/Right:modulate")
+tracks/2/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Right:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -506,7 +581,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/VBoxContainer/Down:modulate")
+tracks/3/path = NodePath("HUD/VBoxContainer/Keys/Down:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -563,7 +638,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 128, 92 ) ]
+"values": [ Vector2( 382, 288 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Key:rotation_degrees")
@@ -578,7 +653,7 @@ tracks/8/keys = {
 "values": [ 0.0, -44.9999, 44.9999, -30.0, 44.9999, 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("HUD/VBoxContainer/HBoxContainer/Enter:modulate")
+tracks/9/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Enter:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -603,7 +678,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 320, 94 ), Vector2( 128, 95 ) ]
+"values": [ Vector2( 840, 448 ), Vector2( 385, 448 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -619,14 +694,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 128, 94 ), Vector2( -24, 95 ) ]
+"values": [ Vector2( 381, 448 ), Vector2( -40, 448 ) ]
 }
 
 [sub_resource type="Animation" id=5]
 length = 2.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUD/VBoxContainer/Up:modulate")
+tracks/0/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -638,7 +713,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HUD/VBoxContainer/HBoxContainer/Left:modulate")
+tracks/1/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -650,7 +725,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HUD/VBoxContainer/HBoxContainer/Right:modulate")
+tracks/2/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Right:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -662,7 +737,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/VBoxContainer/Down:modulate")
+tracks/3/path = NodePath("HUD/VBoxContainer/Keys/Down:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -734,7 +809,7 @@ tracks/8/keys = {
 "values": [ 0.0, 89.9999, 180.0, 270.0, 359.999, 0.0, 89.9999, 180.0, 270.0, 359.999, 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("HUD/VBoxContainer/HBoxContainer/Enter:modulate")
+tracks/9/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Enter:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -748,23 +823,28 @@ tracks/9/keys = {
 
 [node name="Escape" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 448.0 ]
+}
 
 [node name="Keyhole" type="Sprite" parent="."]
 visible = false
-position = Vector2( 128, 95 )
+position = Vector2( 381, 293 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 11 )
 hframes = 4
 
 [node name="Key" type="Sprite" parent="."]
 visible = false
 position = Vector2( 128, 95 )
-scale = Vector2( 1.2, 1.3 )
+scale = Vector2( 2.5, 3 )
 texture = ExtResource( 12 )
 hframes = 4
 
 [node name="SelectingKeys" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 320, 94 )
+scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 6 )
 
 [node name="HUD" type="Control" parent="."]
@@ -782,98 +862,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopText" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 7.0
-margin_right = 256.0
-margin_bottom = 21.0
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Padding4" type="Label" parent="HUD/VBoxContainer"]
+margin_top = 53.0
+margin_right = 800.0
+margin_bottom = 67.0
+size_flags_vertical = 6
 
-[node name="Padding" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 25.0
-margin_right = 256.0
-margin_bottom = 39.0
+[node name="Keys" type="VBoxContainer" parent="HUD/VBoxContainer"]
+margin_top = 125.0
+margin_right = 800.0
+margin_bottom = 195.0
 
-[node name="Up" type="TextureRect" parent="HUD/VBoxContainer"]
-margin_top = 43.0
-margin_right = 256.0
-margin_bottom = 59.0
+[node name="Up" type="TextureRect" parent="HUD/VBoxContainer/Keys"]
+margin_right = 800.0
+margin_bottom = 16.0
 texture = ExtResource( 6 )
 stretch_mode = 4
 
-[node name="Padding3" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 63.0
-margin_right = 256.0
-margin_bottom = 77.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/VBoxContainer"]
-margin_top = 81.0
-margin_right = 256.0
-margin_bottom = 111.0
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/VBoxContainer/Keys"]
+margin_top = 20.0
+margin_right = 800.0
+margin_bottom = 50.0
 alignment = 1
 
-[node name="Left" type="TextureRect" parent="HUD/VBoxContainer/HBoxContainer"]
+[node name="Left" type="TextureRect" parent="HUD/VBoxContainer/Keys/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 16.0
+margin_left = 365.0
+margin_right = 381.0
 margin_bottom = 30.0
 texture = ExtResource( 4 )
 
-[node name="Padding5" type="Label" parent="HUD/VBoxContainer/HBoxContainer"]
-margin_left = 20.0
-margin_top = 8.0
-margin_right = 109.0
-margin_bottom = 22.0
-size_flags_horizontal = 3
-
-[node name="Enter" type="TextureRect" parent="HUD/VBoxContainer/HBoxContainer"]
+[node name="Enter" type="TextureRect" parent="HUD/VBoxContainer/Keys/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 113.0
-margin_right = 143.0
+margin_left = 385.0
+margin_right = 415.0
 margin_bottom = 30.0
 texture = ExtResource( 13 )
 
-[node name="Padding6" type="Label" parent="HUD/VBoxContainer/HBoxContainer"]
-margin_left = 147.0
-margin_top = 8.0
-margin_right = 236.0
-margin_bottom = 22.0
-size_flags_horizontal = 3
-
-[node name="Right" type="TextureRect" parent="HUD/VBoxContainer/HBoxContainer"]
+[node name="Right" type="TextureRect" parent="HUD/VBoxContainer/Keys/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 240.0
-margin_right = 256.0
+margin_left = 419.0
+margin_right = 435.0
 margin_bottom = 30.0
 texture = ExtResource( 5 )
 
-[node name="Padding4" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 115.0
-margin_right = 256.0
-margin_bottom = 129.0
-
-[node name="Down" type="TextureRect" parent="HUD/VBoxContainer"]
+[node name="Down" type="TextureRect" parent="HUD/VBoxContainer/Keys"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 133.0
-margin_right = 256.0
-margin_bottom = 149.0
+margin_top = 54.0
+margin_right = 800.0
+margin_bottom = 70.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="Padding2" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 153.0
-margin_right = 256.0
-margin_bottom = 167.0
+margin_top = 253.0
+margin_right = 800.0
+margin_bottom = 267.0
+size_flags_vertical = 6
+
+[node name="Padding8" type="Label" parent="HUD/VBoxContainer"]
+margin_top = 378.0
+margin_right = 800.0
+margin_bottom = 392.0
+size_flags_vertical = 6
 
 [node name="BottomText" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 171.0
-margin_right = 256.0
-margin_bottom = 185.0
+margin_top = 450.0
+margin_right = 800.0
+margin_bottom = 474.0
+custom_fonts/font = ExtResource( 18 )
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Padding3" type="Label" parent="HUD/VBoxContainer"]
+margin_top = 532.0
+margin_right = 800.0
+margin_bottom = 546.0
+size_flags_vertical = 6
 
 [node name="GameOverTimer" type="Timer" parent="."]
 wait_time = 60.0

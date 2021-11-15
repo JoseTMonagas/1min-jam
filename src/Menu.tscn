@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/small_text.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/button_text.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=5]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 232.0
+margin_right = 800.0
+margin_bottom = 256.0
+custom_fonts/font = ExtResource( 5 )
+text = "EFFUGIUM"
+align = 1
+
+[node name="Padding" type="Label" parent="VBoxContainer"]
+margin_top = 260.0
+margin_right = 800.0
+margin_bottom = 274.0
+align = 1
+
+[node name="StartButton" type="MenuButton" parent="VBoxContainer"]
+margin_top = 278.0
+margin_right = 800.0
+margin_bottom = 305.0
+custom_fonts/font = ExtResource( 4 )
+text = "START"
+
+[node name="CreditsButton" type="MenuButton" parent="VBoxContainer"]
+margin_top = 309.0
+margin_right = 800.0
+margin_bottom = 336.0
+focus_mode = 2
+custom_fonts/font = ExtResource( 4 )
+text = "CREDITS"
+
+[node name="ExitButton" type="MenuButton" parent="VBoxContainer"]
+margin_top = 340.0
+margin_right = 800.0
+margin_bottom = 367.0
+focus_mode = 2
+custom_fonts/font = ExtResource( 4 )
+text = "EXIT"
+
+[node name="DifficultySelector" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="DifficultySelector"]
+margin_top = 207.0
+margin_right = 800.0
+margin_bottom = 231.0
+custom_fonts/font = ExtResource( 5 )
+text = "SELECT DIFFICULTY:"
+align = 1
+
+[node name="Easy" type="MenuButton" parent="DifficultySelector"]
+margin_top = 235.0
+margin_right = 800.0
+margin_bottom = 262.0
+custom_fonts/font = ExtResource( 4 )
+text = "Game Journalist mode"
+
+[node name="EasyExplanation" type="Label" parent="DifficultySelector"]
+margin_top = 266.0
+margin_right = 800.0
+margin_bottom = 285.0
+custom_fonts/font = ExtResource( 3 )
+text = "It's easier to progress in each stage."
+align = 1
+
+[node name="Normal" type="MenuButton" parent="DifficultySelector"]
+margin_top = 289.0
+margin_right = 800.0
+margin_bottom = 316.0
+focus_mode = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Normal mode"
+
+[node name="NormalExplanation" type="Label" parent="DifficultySelector"]
+margin_top = 320.0
+margin_right = 800.0
+margin_bottom = 339.0
+custom_fonts/font = ExtResource( 3 )
+text = "The way it was developed (and tested)."
+align = 1
+
+[node name="Hard" type="MenuButton" parent="DifficultySelector"]
+margin_top = 343.0
+margin_right = 800.0
+margin_bottom = 370.0
+focus_mode = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Quantum Nightmare mode"
+
+[node name="HardExplanation" type="Label" parent="DifficultySelector"]
+margin_top = 374.0
+margin_right = 800.0
+margin_bottom = 393.0
+custom_fonts/font = ExtResource( 3 )
+text = "The \"correct\" key changes as you play."
+align = 1
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="DifficultySelector/Easy" to="." method="_on_Easy_pressed"]
+[connection signal="pressed" from="DifficultySelector/Normal" to="." method="_on_Normal_pressed"]
+[connection signal="pressed" from="DifficultySelector/Hard" to="." method="_on_Hard_pressed"]
