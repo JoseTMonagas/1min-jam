@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/key3.png-ca2d2f06c215b2a0c4404dd1b2c36fe4.stex"
+path="res://.import/eyes3.png-08706f30429f9aa65bbb2cb4dcf216d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/key3.png"
-dest_files=[ "res://.import/key3.png-ca2d2f06c215b2a0c4404dd1b2c36fe4.stex" ]
+source_file="res://assets/aseprite/eyes3.png"
+dest_files=[ "res://.import/eyes3.png-08706f30429f9aa65bbb2cb4dcf216d9.stex" ]
 
 [params]
 
