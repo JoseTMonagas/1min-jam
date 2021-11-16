@@ -20,14 +20,14 @@ func _on_StartButton_pressed() -> void:
 
 func _on_Easy_pressed():
 	Singleton.action_limit = Singleton.DIFFICULTY_LEVELS.EASY
-	get_tree().change_scene("res://src/Escape.tscn")
+	get_tree().change_scene("res://src/Introduction.tscn")
 
 
 func _on_Normal_pressed():
 	Singleton.action_limit = Singleton.DIFFICULTY_LEVELS.MEDIUM
-	get_tree().change_scene("res://src/Escape.tscn")
+	get_tree().change_scene("res://src/Introduction.tscn")
 
 func _on_Hard_pressed():
 	Singleton.action_limit = Singleton.DIFFICULTY_LEVELS.HARD
 	Singleton.quantum_on = true
-	get_tree().change_scene("res://src/Escape.tscn")
+	get_tree().change_scene("res://src/Introduction.tscn")

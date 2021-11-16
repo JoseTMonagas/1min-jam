@@ -63,14 +63,12 @@ func _ready() -> void:
 	correct_key = rng.randi_range(0, keys_amount)
 	self.selected_key = 0
 	self.state = STATES.NONE
-	bottom_text.text = "Quick! Pick a key!"
 	$EscalationSFX.play()
 
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	match(state):
 		STATES.NONE:
-			$SelectingKeys.visible = true
 			_state_selecting_key(event)
 		STATES.FITTING:
 			_state_fitting_key(event)
@@ -99,22 +97,33 @@ func _set_state(value: int) -> int:
 	$WhimperSFX.play()
 	match(state):
 		STATES.NONE:
+			bottom_text.text = "Quick! Which key is it?!"
 			animation_player.play("NONE")
 			audio_player.stream = NONE_SFX
 			audio_player.play()
+			if QUANTUM_ON:
+				correct_key = rng.randi_range(0, keys_amount)
 		STATES.FITTING:
+			bottom_text.text = "Is this the key?"
 			animation_player.play("FITTING")
 			audio_player.stream = FITTING_ROTATING_SFX
 			audio_player.play()
+			if QUANTUM_ON:
+				correct_key = rng.randi_range(0, keys_amount)
 		STATES.ROTATING:
+			bottom_text.text = "It fits! Will it unlock the door?"
 			animation_player.play("ROTATING")
 			audio_player.stream = FITTING_ROTATING_SFX
 			audio_player.play()
+			if QUANTUM_ON:
+				correct_key = rng.randi_range(0, keys_amount)
 		STATES.UNLOCKING:
+			bottom_text.text = "This is the key! Unlock the door!! Hurry!!!"
 			animation_player.play("UNLOCKING")
 			audio_player.stream = UNLOCKING_SFX
 			audio_player.play()
 		STATES.OPENING:
+			bottom_text.text = "The door is jammed! Push!!!"
 			animation_player.play("OPENING")
 			audio_player.stream = OPENING_SFX
 			audio_player.play()
@@ -151,18 +160,14 @@ func _state_fitting_key(event: InputEventKey) -> void:
 	last_action_pressed = event
 	if action_counter >= ACTION_LIMIT:
 		if selected_key == correct_key:
-			bottom_text.text = "It fits!"
 			self.state = STATES.ROTATING
 		else:
-			if QUANTUM_ON:
-				correct_key = rng.randi_range(0, keys_amount)
+			
 			
 			var it_fits: bool = bool(rng.randf() < 1 - 0.5)
 			if it_fits:
-				bottom_text.text = "It fits!"
 				self.state = STATES.ROTATING
 			else:
-				bottom_text.text = "It doesn't fit!"
 				self.state = STATES.NONE
 
 
@@ -180,12 +185,8 @@ func _state_rotating_key(event: InputEventKey) -> void:
 	last_action_pressed = event
 	if action_counter >= ACTION_LIMIT:
 		if selected_key == correct_key:
-			bottom_text.text = "This is the key!"
 			self.state = STATES.UNLOCKING
 		else:
-			if QUANTUM_ON:
-				correct_key = rng.randi_range(0, keys_amount)
-			bottom_text.text = "It doesn't unlock!"
 			self.state = STATES.NONE
 
 func _state_unlocking_door(event: InputEventKey) -> void:
@@ -204,7 +205,6 @@ func _state_unlocking_door(event: InputEventKey) -> void:
 	last_action_pressed = event
 	
 	if action_counter >= ACTION_LIMIT:
-		bottom_text.text = "The door is stuck, push it!! Quick!!!"
 		self.state = STATES.OPENING
 
 func _state_opening_door(event: InputEventKey) -> void:

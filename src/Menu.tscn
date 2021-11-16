@@ -22,38 +22,56 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 232.0
+margin_top = 205.0
 margin_right = 800.0
-margin_bottom = 256.0
+margin_bottom = 229.0
 custom_fonts/font = ExtResource( 5 )
 text = "EFFUGIUM"
 align = 1
 
 [node name="Padding" type="Label" parent="VBoxContainer"]
-margin_top = 260.0
+margin_top = 233.0
 margin_right = 800.0
-margin_bottom = 274.0
+margin_bottom = 247.0
+align = 1
+
+[node name="Padding4" type="Label" parent="VBoxContainer"]
+margin_top = 251.0
+margin_right = 800.0
+margin_bottom = 265.0
 align = 1
 
 [node name="StartButton" type="MenuButton" parent="VBoxContainer"]
-margin_top = 278.0
+margin_top = 269.0
 margin_right = 800.0
-margin_bottom = 305.0
+margin_bottom = 296.0
 custom_fonts/font = ExtResource( 4 )
 text = "START"
 
-[node name="CreditsButton" type="MenuButton" parent="VBoxContainer"]
-margin_top = 309.0
+[node name="Padding2" type="Label" parent="VBoxContainer"]
+margin_top = 300.0
 margin_right = 800.0
-margin_bottom = 336.0
+margin_bottom = 314.0
+align = 1
+
+[node name="CreditsButton" type="MenuButton" parent="VBoxContainer"]
+margin_top = 318.0
+margin_right = 800.0
+margin_bottom = 345.0
 focus_mode = 2
 custom_fonts/font = ExtResource( 4 )
 text = "CREDITS"
 
-[node name="ExitButton" type="MenuButton" parent="VBoxContainer"]
-margin_top = 340.0
+[node name="Padding3" type="Label" parent="VBoxContainer"]
+margin_top = 349.0
 margin_right = 800.0
-margin_bottom = 367.0
+margin_bottom = 363.0
+align = 1
+
+[node name="ExitButton" type="MenuButton" parent="VBoxContainer"]
+margin_top = 367.0
+margin_right = 800.0
+margin_bottom = 394.0
 focus_mode = 2
 custom_fonts/font = ExtResource( 4 )
 text = "EXIT"
@@ -68,56 +86,77 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="DifficultySelector"]
-margin_top = 207.0
+margin_top = 165.0
 margin_right = 800.0
-margin_bottom = 231.0
+margin_bottom = 189.0
 custom_fonts/font = ExtResource( 5 )
 text = "SELECT DIFFICULTY:"
 align = 1
 
-[node name="Easy" type="MenuButton" parent="DifficultySelector"]
-margin_top = 235.0
+[node name="Padding" type="Label" parent="DifficultySelector"]
+margin_top = 193.0
 margin_right = 800.0
-margin_bottom = 262.0
+margin_bottom = 217.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+
+[node name="Easy" type="MenuButton" parent="DifficultySelector"]
+margin_top = 221.0
+margin_right = 800.0
+margin_bottom = 248.0
 custom_fonts/font = ExtResource( 4 )
 text = "Game Journalist mode"
 
 [node name="EasyExplanation" type="Label" parent="DifficultySelector"]
-margin_top = 266.0
+margin_top = 252.0
 margin_right = 800.0
-margin_bottom = 285.0
+margin_bottom = 271.0
 custom_fonts/font = ExtResource( 3 )
 text = "It's easier to progress in each stage."
 align = 1
 
-[node name="Normal" type="MenuButton" parent="DifficultySelector"]
-margin_top = 289.0
+[node name="Padding2" type="Label" parent="DifficultySelector"]
+margin_top = 275.0
 margin_right = 800.0
-margin_bottom = 316.0
+margin_bottom = 299.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+
+[node name="Normal" type="MenuButton" parent="DifficultySelector"]
+margin_top = 303.0
+margin_right = 800.0
+margin_bottom = 330.0
 focus_mode = 2
 custom_fonts/font = ExtResource( 4 )
 text = "Normal mode"
 
 [node name="NormalExplanation" type="Label" parent="DifficultySelector"]
-margin_top = 320.0
+margin_top = 334.0
 margin_right = 800.0
-margin_bottom = 339.0
+margin_bottom = 353.0
 custom_fonts/font = ExtResource( 3 )
 text = "The way it was developed (and tested)."
 align = 1
 
-[node name="Hard" type="MenuButton" parent="DifficultySelector"]
-margin_top = 343.0
+[node name="Padding3" type="Label" parent="DifficultySelector"]
+margin_top = 357.0
 margin_right = 800.0
-margin_bottom = 370.0
+margin_bottom = 381.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+
+[node name="Hard" type="MenuButton" parent="DifficultySelector"]
+margin_top = 385.0
+margin_right = 800.0
+margin_bottom = 412.0
 focus_mode = 2
 custom_fonts/font = ExtResource( 4 )
 text = "Quantum Nightmare mode"
 
 [node name="HardExplanation" type="Label" parent="DifficultySelector"]
-margin_top = 374.0
+margin_top = 416.0
 margin_right = 800.0
-margin_bottom = 393.0
+margin_bottom = 435.0
 custom_fonts/font = ExtResource( 3 )
 text = "The \"correct\" key changes as you play."
 align = 1
