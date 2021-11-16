@@ -221,9 +221,10 @@ func _state_opening_door(event: InputEventKey) -> void:
 
 
 func _on_GameOverTimer_timeout():
+	$Scream.play()
 	get_tree().change_scene("res://src/Death.tscn")
 
 
 func _on_EscalationSFX_finished():
 	$DeathSFX.play()
-	$Scream.play()
+	
