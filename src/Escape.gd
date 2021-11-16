@@ -226,3 +226,4 @@ func _on_GameOverTimer_timeout():
 
 func _on_EscalationSFX_finished():
 	$DeathSFX.play()
+	$Scream.play()

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/319258__ramston__woman-screaming-of-fear-[AudioTrimmer.com].wav-586b65542a68bfc7987fcf758b2b6b70.sample"
+
+[deps]
+
+source_file="res://assets/audio/319258__ramston__woman-screaming-of-fear-[AudioTrimmer.com].wav"
+dest_files=[ "res://.import/319258__ramston__woman-screaming-of-fear-[AudioTrimmer.com].wav-586b65542a68bfc7987fcf758b2b6b70.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

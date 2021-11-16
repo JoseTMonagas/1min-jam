@@ -42,13 +42,12 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 400.001, 300.046 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.281145 )
+color = Color( 0, 0, 0, 0.311789 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/Escape.gd" type="Script" id=1]
 [ext_resource path="res://assets/aseprite/key5.png" type="Texture" id=2]
@@ -18,8 +18,9 @@
 [ext_resource path="res://assets/audio/370937__inspectorj__horror-violin-tremolo-cluster-b.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/audio/352508__epicdude959__creepy-ghost-scream.mp3" type="AudioStream" id=17]
 [ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=18]
+[ext_resource path="res://assets/audio/319258__ramston__woman-screaming-of-fear-[AudioTrimmer.com].wav" type="AudioStream" id=19]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 2 ) ],
 "loop": true,
@@ -27,8 +28,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=1]
-resource_name = "FITTING"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
@@ -139,7 +139,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "LtRIN"
 length = 0.3
 tracks/0/type = "value"
@@ -155,7 +155,7 @@ tracks/0/keys = {
 "values": [ Vector2( -32, 448 ), Vector2( 381, 448 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
 resource_name = "LtROUT"
 length = 0.3
 tracks/0/type = "value"
@@ -171,8 +171,7 @@ tracks/0/keys = {
 "values": [ Vector2( 385, 448 ), Vector2( 840, 448 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "NONE"
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Key:visible")
@@ -283,7 +282,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 resource_name = "OPENING"
 loop = true
 tracks/0/type = "value"
@@ -395,7 +394,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/VBoxContainer/Keys/HBoxContainer/Left:modulate")
@@ -542,7 +541,7 @@ tracks/11/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/VBoxContainer/Keys/Up:modulate")
@@ -665,8 +664,7 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "RtLIN"
+[sub_resource type="Animation" id=9]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SelectingKeys:position")
@@ -681,8 +679,7 @@ tracks/0/keys = {
 "values": [ Vector2( 840, 448 ), Vector2( 385, 448 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "RtLOUT"
+[sub_resource type="Animation" id=10]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SelectingKeys:position")
@@ -697,7 +694,7 @@ tracks/0/keys = {
 "values": [ Vector2( 381, 448 ), Vector2( -40, 448 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 length = 2.2
 loop = true
 tracks/0/type = "value"
@@ -845,7 +842,7 @@ hframes = 4
 visible = false
 position = Vector2( 320, 94 )
 scale = Vector2( 2.5, 2.5 )
-frames = SubResource( 6 )
+frames = SubResource( 1 )
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
@@ -948,16 +945,16 @@ one_shot = true
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FITTING = SubResource( 1 )
-anims/LtRIN = SubResource( 9 )
-anims/LtROUT = SubResource( 10 )
-anims/NONE = SubResource( 2 )
-anims/OPENING = SubResource( 11 )
-anims/RESET = SubResource( 3 )
-anims/ROTATING = SubResource( 4 )
-anims/RtLIN = SubResource( 7 )
-anims/RtLOUT = SubResource( 8 )
-anims/UNLOCKING = SubResource( 5 )
+anims/FITTING = SubResource( 2 )
+anims/LtRIN = SubResource( 3 )
+anims/LtROUT = SubResource( 4 )
+anims/NONE = SubResource( 5 )
+anims/OPENING = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+anims/ROTATING = SubResource( 8 )
+anims/RtLIN = SubResource( 9 )
+anims/RtLOUT = SubResource( 10 )
+anims/UNLOCKING = SubResource( 11 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 bus = "SFX"
@@ -977,6 +974,10 @@ bus = "Escalation"
 [node name="DeathSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 bus = "Escalation"
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = 3.0
 
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
 [connection signal="finished" from="EscalationSFX" to="." method="_on_EscalationSFX_finished"]

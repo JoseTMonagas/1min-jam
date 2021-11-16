@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=1]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 
@@ -19,7 +19,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play(\"BLINKING\")
 "
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "BLINKING"
 loop = true
 tracks/0/type = "value"
@@ -35,8 +35,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "DEFAULT"
+[sub_resource type="Animation" id=3]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer:modulate")
@@ -51,7 +50,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer/Label:modulate")
@@ -105,7 +104,7 @@ tracks/3/keys = {
 [node name="Death" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = SubResource( 3 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -125,18 +124,18 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 166.0
+margin_top = 183.0
 margin_right = 364.0
-margin_bottom = 379.0
+margin_bottom = 396.0
 custom_fonts/font = ExtResource( 1 )
 text = "     You wake up in  the middle of the night, your own body refuses to move, all you can do is look around, before long you notice the very darkness around you creeping closer, you close your eyes and hope that this too is a nightmare."
 align = 3
 autowrap = true
 
 [node name="Padding" type="Label" parent="VBoxContainer"]
-margin_top = 383.0
+margin_top = 400.0
 margin_right = 364.0
-margin_bottom = 397.0
+margin_bottom = 414.0
 
 [node name="ReturnBtn" type="MenuButton" parent="VBoxContainer"]
 visible = false
@@ -148,9 +147,9 @@ custom_fonts/font = ExtResource( 1 )
 text = "BACK TO TITLE"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BLINKING = SubResource( 4 )
-anims/DEFAULT = SubResource( 1 )
-anims/RESET = SubResource( 2 )
+anims/BLINKING = SubResource( 2 )
+anims/DEFAULT = SubResource( 3 )
+anims/RESET = SubResource( 4 )
 
 [connection signal="toggled" from="VBoxContainer/ReturnBtn" to="." method="_on_ReturnBtn_toggled"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
