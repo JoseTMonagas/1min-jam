@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/Escape.gd" type="Script" id=1]
 [ext_resource path="res://assets/aseprite/key5.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/audio/352508__epicdude959__creepy-ghost-scream.mp3" type="AudioStream" id=17]
 [ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/audio/319258__ramston__woman-screaming-of-fear-[AudioTrimmer.com].wav" type="AudioStream" id=19]
+[ext_resource path="res://src/BG.tscn" type="PackedScene" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -823,6 +824,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 448.0 ]
 }
+
+[node name="BG" parent="." instance=ExtResource( 20 )]
 
 [node name="Keyhole" type="Sprite" parent="."]
 visible = false

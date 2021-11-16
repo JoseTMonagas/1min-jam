@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/button_text.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/BG.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -83,6 +84,8 @@ script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BG" parent="." instance=ExtResource( 3 )]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0 )

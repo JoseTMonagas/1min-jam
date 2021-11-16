@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=1]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 
@@ -20,7 +20,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play(\"BLINKING\")
 "
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "BLINKING"
 loop = true
 tracks/0/type = "value"
@@ -36,8 +36,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "DEFAULT"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer:modulate")
@@ -52,7 +51,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer/Title:modulate")
@@ -94,7 +93,7 @@ tracks/2/keys = {
 [node name="Victory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = SubResource( 3 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,9 +133,9 @@ custom_fonts/font = ExtResource( 1 )
 text = "BACK TO TITLE"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BLINKING = SubResource( 4 )
-anims/DEFAULT = SubResource( 1 )
-anims/RESET = SubResource( 2 )
+anims/BLINKING = SubResource( 2 )
+anims/DEFAULT = SubResource( 3 )
+anims/RESET = SubResource( 4 )
 
 [connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
